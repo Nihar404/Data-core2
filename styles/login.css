@@ -1,0 +1,419 @@
+/* Modern Matte Login - Secure Data Storage */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --matte-dark: #2d3748;
+    --matte-darker: #1a202c;
+    --matte-light: #4a5568;
+    --sunny-yellow: #f6e05e;
+    --electronic-blue: #63b3ed;
+    --bright-red: #fc8181;
+    --pure-white: #ffffff;
+    --text-light: #e2e8f0;
+    --success-green: #68d391;
+}
+
+body {
+    font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+    background: linear-gradient(135deg, var(--matte-darker) 0%, var(--matte-dark) 100%);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Remove animations */
+.cyber-grid {
+    display: none;
+}
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.pulse-glow {
+    display: none;
+}
+
+.login-box {
+    background: var(--matte-dark);
+    border: 2px solid var(--matte-light);
+    padding: 60px 50px;
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    z-index: 2;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.login-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--sunny-yellow), var(--electronic-blue), var(--bright-red));
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.login-logo h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--pure-white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.login-logo p {
+    color: var(--electronic-blue);
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.login-form, .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-label {
+    color: var(--pure-white);
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-label::before {
+    content: '▶';
+    color: var(--sunny-yellow);
+    font-size: 0.8rem;
+}
+
+.cyber-input {
+    position: relative;
+}
+
+.cyber-input input {
+    width: 100%;
+    padding: 18px 20px;
+    background: var(--matte-darker);
+    border: 2px solid var(--matte-light);
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.cyber-input input:focus {
+    outline: none;
+    border-color: var(--electronic-blue);
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.1);
+}
+
+.cyber-input input:invalid {
+    border-color: var(--bright-red);
+}
+
+.cyber-input input:valid {
+    border-color: var(--electronic-blue);
+}
+
+.input-glow {
+    display: none;
+}
+
+.login-btn {
+    background: var(--electronic-blue);
+    color: var(--matte-darker);
+    border: none;
+    padding: 18px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 12px;
+    margin-top: 20px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn:hover:not(:disabled) {
+    background: var(--sunny-yellow);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(246, 224, 94, 0.3);
+}
+
+.login-btn:disabled {
+    background: var(--matte-light);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.login-btn:disabled .btn-text {
+    opacity: 0.7;
+}
+
+.btn-glow {
+    display: none;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.auth-switch p {
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.switch-link {
+    color: var(--sunny-yellow);
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+    margin-left: 8px;
+}
+
+.switch-link:hover {
+    color: var(--electronic-blue);
+    text-decoration: underline;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding-top: 30px;
+    border-top: 1px solid var(--matte-light);
+}
+
+.error-message {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 20px;
+    display: none;
+    font-weight: 600;
+    background: rgba(252, 129, 129, 0.1);
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--bright-red);
+    color: var(--bright-red);
+}
+
+.error-message.success {
+    background: rgba(104, 211, 145, 0.1);
+    border-color: var(--success-green);
+    color: var(--success-green);
+}
+
+/* Security Assurance */
+.security-assurance {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background: var(--matte-darker);
+    border-radius: 12px;
+    border: 1px solid var(--matte-light);
+}
+
+.security-assurance p {
+    color: var(--electronic-blue);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Form Validation Styles */
+.cyber-input.valid input {
+    border-color: var(--success-green);
+}
+
+.cyber-input.invalid input {
+    border-color: var(--bright-red);
+}
+
+.validation-message {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.validation-message.valid {
+    color: var(--success-green);
+    display: block;
+}
+
+.validation-message.invalid {
+    color: var(--bright-red);
+    display: block;
+}
+
+/* Demo Credentials */
+.demo-credentials {
+    background: var(--matte-darker);
+    border: 1px solid var(--matte-light);
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.demo-credentials h4 {
+    color: var(--sunny-yellow);
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.demo-credentials p {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin: 5px 0;
+}
+
+.demo-credentials code {
+    background: var(--matte-dark);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'SF Mono', monospace;
+    color: var(--electronic-blue);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-box {
+        margin: 20px;
+        padding: 50px 30px;
+    }
+    
+    .login-logo h1 {
+        font-size: 2.5rem;
+    }
+    
+    .login-logo p {
+        font-size: 1rem;
+    }
+    
+    .security-assurance p {
+        font-size: 0.8rem;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 40px 25px;
+    }
+    
+    .login-logo h1 {
+        font-size: 2rem;
+    }
+    
+    .form-group {
+        gap: 10px;
+    }
+    
+    .cyber-input input {
+        padding: 15px 18px;
+        font-size: 0.9rem;
+    }
+    
+    .login-btn {
+        padding: 16px;
+        font-size: 1rem;
+    }
+}
+
+/* Focus styles for accessibility */
+.cyber-input input:focus,
+.login-btn:focus {
+    outline: 2px solid var(--electronic-blue);
+    outline-offset: 2px;
+}
+
+/* Placeholder styling */
+.cyber-input input::placeholder {
+    color: var(--matte-light);
+    opacity: 0.7;
+}
+
+/* Selection styling */
+::selection {
+    background: var(--electronic-blue);
+    color: var(--matte-darker);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--matte-darker);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--matte-light);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--electronic-blue);
+}

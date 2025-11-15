@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Bhandaar | Intelligent Multi-Modal Storage</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <button class="cyber-btn logout-btn" id="logoutBtn" onclick="AuthSystem.logout()">
+                <span class="btn-text">LOGOUT</span>
+                <span class="btn-glow"></span>
+            </button>
+            <div class="logo-container">
+                <h1 class="logo" data-text="DATA_BHANDAAR">DATA_BHANDAAR</h1>
+                <div class="logo-glow"></div>
+            </div>
+            <p class="tagline">>_ INTELLIGENT_MULTI_MODAL_STORAGE_SYSTEM</p>
+        </header>
+
+
+        <!-- Storage Stats Section --> 
+<section class="storage-stats-section">
+    <h2 class="section-title">>_ STORAGE_STATUS</h2>
+    <div class="storage-stats" id="storageStats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-label">FILES_STORED:</span>
+                <span class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">TOTAL_SIZE:</span>
+                <span class="stat-value">0 Bytes</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">STORAGE_USED:</span>
+                <span class="stat-value">0%</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">ACTIVE_BACKENDS:</span>
+                <span class="stat-value">0</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Storage Management Section -->
+<section class="storage-management-section">
+    <h2 class="section-title">>_ STORAGE_MANAGEMENT</h2>
+    <div class="storage-controls">
+        <div class="storage-info">
+            <div class="storage-backends">
+                <h3>>_ ACTIVE_STORAGE_BACKENDS</h3>
+                <div class="backends-list" id="backendsList">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="storage-actions">
+            <button class="cyber-btn" id="optimizeStorageBtn" onclick="optimizeStorage()">
+                <span class="btn-text">OPTIMIZE_STORAGE</span>
+            </button>
+            <button class="cyber-btn" id="clearCacheBtn" onclick="clearCache()">
+                <span class="btn-text">CLEAR_CACHE</span>
+            </button>
+            <button class="cyber-btn" id="exportDataBtn" onclick="exportAllData()">
+                <span class="btn-text">EXPORT_ALL_DATA</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <h2 class="section-title">>_ UPLOAD_DATA</h2>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <div class="pixel-grid"></div>
+                        <div class="upload-arrow">↓</div>
+                    </div>
+                    <p class="section-description">DRAG_&_DROP_FILES_HERE_(IMAGES/VIDEOS/AUDIO/JSON)</p>
+                    <input type="file" id="fileInput" multiple style="display: none;">
+                    <button class="cyber-btn" id="uploadBtn">
+                        <span class="btn-text">SELECT_FILES</span>
+                        <span class="btn-glow"></span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- File Analysis Section -->
+            <section class="analysis-section">
+                <h2 class="section-title">>_ FILE_ANALYSIS</h2>
+                <div class="analysis-results" id="analysisResults">
+                    <div class="analysis-placeholder">
+                        <p>>_ UPLOAD_FILES_TO_SEE_INTELLIGENT_ANALYSIS</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Options Section -->
+            <section class="options-section">
+                <h2 class="section-title">>_ SYSTEM_OPTIONS</h2>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <label class="option-label">ADD_METADATA</label>
+                        <div class="cyber-input">
+                            <textarea id="metadataInput" placeholder=">_ ENTER_OPTIONAL_METADATA_OR_COMMENTS..."></textarea>
+                            <div class="input-glow"></div>
+                        </div>
+                    </div>
+                    <div class="option-item">
+                        <label class="option-label">AUTO_CATEGORIZE</label>
+                        <div class="cyber-toggle">
+                            <input type="checkbox" id="autoCategorize" checked>
+                            <span class="toggle-slider">
+                                <span class="toggle-text">ON</span>
+                                <span class="toggle-glow"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="option-item">
+                        <label class="option-label">INTELLIGENT_ANALYSIS</label>
+                        <div class="cyber-toggle">
+                            <input type="checkbox" id="intelligentAnalysis" checked>
+                            <span class="toggle-slider">
+                                <span class="toggle-text">ON</span>
+                                <span class="toggle-glow"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- JSON Conversion Section -->
+            <section class="json-conversion-section">
+                <h2 class="section-title">>_ JSON_CONVERSION_OPTIONS</h2>
+                <div class="conversion-options">
+                    <div class="option-item">
+                        <label class="option-label">CONVERT_TO_SQL</label>
+                        <div class="cyber-toggle">
+                            <input type="checkbox" id="convertToSQL">
+                            <span class="toggle-slider">
+                                <span class="toggle-text">OFF</span>
+                                <span class="toggle-glow"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="option-item">
+                        <label class="option-label">CONVERT_TO_NOSQL</label>
+                        <div class="cyber-toggle">
+                            <input type="checkbox" id="convertToNoSQL">
+                            <span class="toggle-slider">
+                                <span class="toggle-text">OFF</span>
+                                <span class="toggle-glow"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="option-item">
+                        <label class="option-label">STORE_ORIGINAL</label>
+                        <div class="cyber-toggle">
+                            <input type="checkbox" id="storeOriginal" checked>
+                            <span class="toggle-slider">
+                                <span class="toggle-text">ON</span>
+                                <span class="toggle-glow"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="conversion-preview" id="conversionPreview" style="display: none;">
+                    <h3 class="preview-title">>_ CONVERSION_PREVIEW</h3>
+                    <div class="preview-content" id="previewContent"></div>
+                </div>
+            </section>
+
+            <!-- Processing Section -->
+            <section class="processing-section">
+                <h2 class="section-title">>_ PROCESSING_STATUS</h2>
+                <div class="status-display">
+                    <div class="status-item">
+                        <span class="status-label">ANALYZING_CONTENT</span>
+                        <div class="status-indicator" id="analyzingStatus">
+                            <div class="status-glow"></div>
+                        </div>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">CATEGORIZING_DATA</span>
+                        <div class="status-indicator" id="categorizingStatus">
+                            <div class="status-glow"></div>
+                        </div>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">STORAGE_OPTIMIZATION</span>
+                        <div class="status-indicator" id="storageStatus">
+                            <div class="status-glow"></div>
+                        </div>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">SCHEMA_GENERATION</span>
+                        <div class="status-indicator" id="schemaStatus">
+                            <div class="status-glow"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="cyber-progress">
+                        <div class="progress-fill" id="progressFill">
+                            <div class="progress-glow"></div>
+                        </div>
+                    </div>
+                    <span class="progress-text" id="progressText">0%</span>
+                </div>
+            </section>
+
+            <!-- Stored Files Section -->
+            <section class="stored-files-section">
+                <h2 class="section-title">>_ YOUR_STORED_FILES</h2>
+                <div class="files-controls">
+                    <div class="cyber-input" style="flex: 1;">
+                        <input type="text" id="searchInput" placeholder=">_ SEARCH_FILES...">
+                        <div class="input-glow"></div>
+                    </div>
+                    <button class="cyber-btn" id="refreshBtn">
+                        <span class="btn-text">REFRESH</span>
+                        <span class="btn-glow"></span>
+                    </button>
+                </div>
+                <div class="files-grid" id="filesGrid">
+                    <div class="no-files">
+                        <p>>_ NO_FILES_STORED_YET</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section">
+                <h2 class="section-title">>_ PROCESSING_RESULTS</h2>
+                <div class="results-container" id="resultsContainer">
+                    <div class="result-placeholder">
+                        <div class="scan-line"></div>
+                        <p>>_ UPLOAD_DATA_TO_SEE_PROCESSING_RESULTS</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-grid"></div>
+            <p>>_ DATA_BHANDAAR_©_2023_|_INTELLIGENT_MULTI_MODAL_STORAGE_SYSTEM</p>
+        </footer>
+    </div>
+
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/storage-manager.js"></script>
+    <script src="scripts/json-converter.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

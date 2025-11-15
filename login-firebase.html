@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Bhandaar | Login (Firebase Enabled)</title>
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <div class="login-container">
+        <div class="pulse-glow"></div>
+        <div class="login-box">
+            <div class="login-logo">
+                <h1 data-text="DATA_BHANDAAR">DATA_BHANDAAR</h1>
+                <p>>_ SECURE_ACCESS_[FIREBASE_ENABLED]</p>
+            </div>
+
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">USERNAME</label>
+                    <div class="cyber-input">
+                        <input type="text" id="username" placeholder=">_ ENTER_USERNAME" required>
+                        <div class="input-glow"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">SECURITY_PIN</label>
+                    <div class="cyber-input">
+                        <input type="password" id="password" placeholder=">_ ENTER_4_DIGIT_PIN" required maxlength="4">
+                        <div class="input-glow"></div>
+                    </div>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <span class="btn-text">LOGIN</span>
+                    <span class="btn-glow"></span>
+                </button>
+
+                <div class="auth-switch">
+                    <p>>_ NEW_USER? <span class="switch-link" id="switchToSignup">CREATE_ACCOUNT</span></p>
+                </div>
+
+                <div class="error-message" id="errorMessage">
+                    >_ AUTHENTICATION_FAILED
+                </div>
+            </form>
+
+            <form class="signup-form" id="signupForm" style="display: none;">
+                <div class="form-group">
+                    <label class="form-label">CHOOSE_USERNAME</label>
+                    <div class="cyber-input">
+                        <input type="text" id="newUsername" placeholder=">_ ENTER_USERNAME_(3-20_CHARS)" required>
+                        <div class="input-glow"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">CREATE_PIN</label>
+                    <div class="cyber-input">
+                        <input type="password" id="newPassword" placeholder=">_ ENTER_4_DIGIT_PIN" required maxlength="4">
+                        <div class="input-glow"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">CONFIRM_PIN</label>
+                    <div class="cyber-input">
+                        <input type="password" id="confirmPassword" placeholder=">_ RE-ENTER_PIN" required maxlength="4">
+                        <div class="input-glow"></div>
+                    </div>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <span class="btn-text">CREATE_ACCOUNT</span>
+                    <span class="btn-glow"></span>
+                </button>
+
+                <div class="auth-switch">
+                    <p>>_ EXISTING_USER? <span class="switch-link" id="switchToLogin">LOGIN_HERE</span></p>
+                </div>
+
+                <div class="error-message" id="signupErrorMessage">
+                    >_ SIGNUP_FAILED
+                </div>
+            </form>
+
+            <!-- Security Assurance Section -->
+            <div class="security-assurance">
+                <p>🔒 CROSS_DEVICE_LOGIN | 🔑 CLOUD_SYNC | 🛡️ FIREBASE_SECURE</p>
+            </div>
+
+            <div class="login-footer">
+                >_ INTELLIGENT_MULTI_MODAL_STORAGE_©_2023
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
+    <!-- Firebase Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+    <!-- Firebase Configuration -->
+    <script src="scripts/firebase-config.js"></script>
+
+    <!-- Firebase-enabled Authentication System -->
+    <script src="scripts/auth-firebase.js"></script>
+</body>
+</html>

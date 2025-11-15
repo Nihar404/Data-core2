@@ -1,0 +1,132 @@
+{
+  "orders": [
+    {
+      "orderId": "ORD-2024-001",
+      "userId": 1001,
+      "orderDate": "2024-03-20T14:30:00Z",
+      "status": "completed",
+      "customer": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.doe@example.com",
+        "phone": "+1-555-0123",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "state": "NY",
+          "zipCode": "10001",
+          "country": "USA"
+        },
+        "preferences": {
+          "newsletter": true,
+          "smsNotifications": false,
+          "language": "en"
+        }
+      },
+      "items": [
+        {
+          "productId": "PROD-001",
+          "productName": "Wireless Headphones",
+          "quantity": 2,
+          "unitPrice": 199.99,
+          "discount": 10,
+          "subtotal": 359.98
+        },
+        {
+          "productId": "PROD-003",
+          "productName": "Laptop Backpack",
+          "quantity": 1,
+          "unitPrice": 79.99,
+          "discount": 0,
+          "subtotal": 79.99
+        }
+      ],
+      "payment": {
+        "method": "credit_card",
+        "cardType": "Visa",
+        "lastFourDigits": "4321",
+        "transactionId": "TXN-20240320-001",
+        "amount": 439.97,
+        "currency": "USD",
+        "status": "completed"
+      },
+      "shipping": {
+        "method": "express",
+        "cost": 15.00,
+        "trackingNumber": "TRACK-001-XYZ",
+        "estimatedDelivery": "2024-03-25T00:00:00Z",
+        "actualDelivery": "2024-03-24T16:30:00Z",
+        "carrier": "FedEx"
+      },
+      "totals": {
+        "subtotal": 439.97,
+        "tax": 35.20,
+        "shipping": 15.00,
+        "discount": 20.00,
+        "total": 470.17
+      }
+    },
+    {
+      "orderId": "ORD-2024-002",
+      "userId": 1002,
+      "orderDate": "2024-03-21T10:15:00Z",
+      "status": "processing",
+      "customer": {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "email": "jane.smith@example.com",
+        "phone": "+1-555-0456",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "Toronto",
+          "state": "ON",
+          "zipCode": "M5H 2N2",
+          "country": "Canada"
+        },
+        "preferences": {
+          "newsletter": true,
+          "smsNotifications": true,
+          "language": "en"
+        }
+      },
+      "items": [
+        {
+          "productId": "PROD-002",
+          "productName": "Smart Watch",
+          "quantity": 1,
+          "unitPrice": 299.99,
+          "discount": 15,
+          "subtotal": 254.99
+        }
+      ],
+      "payment": {
+        "method": "paypal",
+        "transactionId": "TXN-20240321-002",
+        "amount": 254.99,
+        "currency": "USD",
+        "status": "pending"
+      },
+      "shipping": {
+        "method": "standard",
+        "cost": 10.00,
+        "trackingNumber": "TRACK-002-ABC",
+        "estimatedDelivery": "2024-03-28T00:00:00Z",
+        "carrier": "UPS"
+      },
+      "totals": {
+        "subtotal": 254.99,
+        "tax": 33.15,
+        "shipping": 10.00,
+        "discount": 45.00,
+        "total": 253.14
+      }
+    }
+  ],
+  "metadata": {
+    "totalOrders": 2,
+    "totalRevenue": 723.31,
+    "averageOrderValue": 361.66,
+    "generatedAt": "2024-03-22T12:00:00Z",
+    "currency": "USD"
+  }
+}

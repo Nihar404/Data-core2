@@ -1,0 +1,138 @@
+[
+  {
+    "productId": "PROD-001",
+    "name": "Wireless Headphones",
+    "description": "High-quality wireless headphones with noise cancellation and 30-hour battery life. Perfect for music lovers and professionals who need to focus.",
+    "price": 199.99,
+    "currency": "USD",
+    "tags": ["electronics", "audio", "wireless", "premium", "noise-canceling"],
+    "metadata": {
+      "brand": "AudioTech",
+      "model": "AT-2000X",
+      "releaseYear": 2024,
+      "warranty": "2 years"
+    },
+    "attributes": {
+      "color": ["Black", "Silver", "Blue"],
+      "weight": "250g",
+      "batteryLife": "30 hours",
+      "connectivity": ["Bluetooth 5.0", "USB-C"]
+    },
+    "reviews": [
+      {
+        "userId": "user123",
+        "rating": 5,
+        "comment": "Excellent sound quality!",
+        "date": "2024-03-15"
+      },
+      {
+        "userId": "user456",
+        "rating": 4,
+        "comment": "Great product, slightly expensive",
+        "date": "2024-03-18"
+      }
+    ],
+    "inventory": {
+      "inStock": true,
+      "quantity": 150,
+      "warehouses": [
+        {
+          "location": "New York",
+          "quantity": 80
+        },
+        {
+          "location": "Los Angeles",
+          "quantity": 70
+        }
+      ]
+    }
+  },
+  {
+    "productId": "PROD-002",
+    "name": "Smart Watch",
+    "description": "Advanced fitness tracking smartwatch with heart rate monitoring, GPS, and sleep analysis. Stay connected and healthy.",
+    "price": 299.99,
+    "currency": "USD",
+    "tags": ["wearable", "fitness", "smart-device", "health"],
+    "metadata": {
+      "brand": "FitTech",
+      "model": "FT-5000",
+      "releaseYear": 2024,
+      "warranty": "1 year"
+    },
+    "attributes": {
+      "color": ["Black", "White", "Rose Gold"],
+      "weight": "45g",
+      "batteryLife": "7 days",
+      "waterResistance": "50m",
+      "displaySize": "1.4 inches"
+    },
+    "reviews": [
+      {
+        "userId": "user789",
+        "rating": 5,
+        "comment": "Love the fitness features!",
+        "date": "2024-03-10"
+      }
+    ],
+    "inventory": {
+      "inStock": true,
+      "quantity": 200,
+      "warehouses": [
+        {
+          "location": "Chicago",
+          "quantity": 120
+        },
+        {
+          "location": "Miami",
+          "quantity": 80
+        }
+      ]
+    },
+    "social": {
+      "likes": 1250,
+      "shares": 340,
+      "comments": 89
+    }
+  },
+  {
+    "productId": "PROD-003",
+    "name": "Laptop Backpack",
+    "description": "Durable and spacious laptop backpack with multiple compartments, USB charging port, and anti-theft design.",
+    "price": 79.99,
+    "currency": "USD",
+    "tags": ["accessories", "travel", "laptop", "storage"],
+    "metadata": {
+      "brand": "TravelGear",
+      "model": "TG-BP100",
+      "releaseYear": 2023,
+      "warranty": "1 year"
+    },
+    "attributes": {
+      "color": ["Black", "Gray", "Navy"],
+      "weight": "900g",
+      "capacity": "35L",
+      "laptopSize": "Up to 17 inches",
+      "material": "Water-resistant polyester"
+    },
+    "reviews": [],
+    "inventory": {
+      "inStock": true,
+      "quantity": 500,
+      "warehouses": [
+        {
+          "location": "Seattle",
+          "quantity": 300
+        },
+        {
+          "location": "Boston",
+          "quantity": 200
+        }
+      ]
+    },
+    "geo": {
+      "shipsTo": ["USA", "Canada", "Mexico", "UK", "EU"],
+      "originCountry": "China"
+    }
+  }
+]
