@@ -9,6 +9,116 @@ class JSONConverter {
     }
 
     /**
+     * Analyze JSON structure to determine best conversion strategy
+     * @param {Object|Array} jsonData - The JSON data to analyze
+     * @returns {Object} Analysis results with structure type and recommendations
+     */
+    analyzeStructure(jsonData) {
+        const analysis = {
+            type: Array.isArray(jsonData) ? 'array' : typeof jsonData,
+            isFlat: true,
+            isNested: false,
+            isRelational: false,
+            depth: 0,
+            hasArrays: false,
+            hasObjects: false,
+            complexity: 'simple',
+            recommendation: 'nosql', // Default recommendation
+            itemCount: 0,
+            fields: new Set()
+        };
+
+        if (Array.isArray(jsonData)) {
+            analysis.itemCount = jsonData.length;
+            if (jsonData.length > 0) {
+                const depth = this._calculateDepth(jsonData[0]);
+                analysis.depth = depth;
+
+                // Analyze first few items for structure
+                const sampleSize = Math.min(10, jsonData.length);
+                for (let i = 0; i < sampleSize; i++) {
+                    this._analyzeObject(jsonData[i], analysis);
+                }
+            }
+        } else if (typeof jsonData === 'object' && jsonData !== null) {
+            analysis.itemCount = 1;
+            analysis.depth = this._calculateDepth(jsonData);
+            this._analyzeObject(jsonData, analysis);
+        }
+
+        // Determine structure characteristics
+        if (analysis.depth > 2) {
+            analysis.isNested = true;
+            analysis.isFlat = false;
+        }
+
+        if (analysis.hasArrays && analysis.hasObjects) {
+            analysis.isRelational = true;
+            analysis.complexity = 'complex';
+        } else if (analysis.isNested) {
+            analysis.complexity = 'moderate';
+        }
+
+        // Make recommendation
+        if (analysis.isRelational || (analysis.depth > 1 && analysis.hasArrays)) {
+            analysis.recommendation = 'both'; // Convert to both SQL and NoSQL
+        } else if (analysis.isFlat && analysis.itemCount > 100) {
+            analysis.recommendation = 'sql'; // Tabular data suits SQL
+        } else {
+            analysis.recommendation = 'nosql'; // Document-style suits NoSQL
+        }
+
+        analysis.fields = Array.from(analysis.fields);
+
+        return analysis;
+    }
+
+    /**
+     * Calculate depth of nested structure
+     */
+    _calculateDepth(obj, currentDepth = 0) {
+        if (typeof obj !== 'object' || obj === null) {
+            return currentDepth;
+        }
+
+        let maxDepth = currentDepth;
+
+        const values = Array.isArray(obj) ? obj : Object.values(obj);
+        values.forEach(value => {
+            if (typeof value === 'object' && value !== null) {
+                const depth = this._calculateDepth(value, currentDepth + 1);
+                maxDepth = Math.max(maxDepth, depth);
+            }
+        });
+
+        return maxDepth;
+    }
+
+    /**
+     * Analyze an object's structure
+     */
+    _analyzeObject(obj, analysis) {
+        if (typeof obj !== 'object' || obj === null) return;
+
+        Object.keys(obj).forEach(key => {
+            analysis.fields.add(key);
+            const value = obj[key];
+
+            if (Array.isArray(value)) {
+                analysis.hasArrays = true;
+                if (value.length > 0 && typeof value[0] === 'object') {
+                    analysis.isNested = true;
+                    analysis.isFlat = false;
+                }
+            } else if (typeof value === 'object' && value !== null) {
+                analysis.hasObjects = true;
+                analysis.isNested = true;
+                analysis.isFlat = false;
+            }
+        });
+    }
+
+    /**
      * Convert JSON to SQL-friendly structure
      * @param {Object|Array} jsonData - The JSON data to convert
      * @param {String} rootTableName - Name for the root table

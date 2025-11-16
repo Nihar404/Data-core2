@@ -1287,6 +1287,123 @@ input:checked + .toggle-slider:before {
     padding: 5px;
 }
 
+/* SQL Viewer Styles */
+.sql-viewer {
+    padding: 20px;
+    color: var(--text-light);
+}
+
+.table-selector {
+    margin-bottom: 20px;
+}
+
+.table-selector label {
+    color: var(--pure-white);
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.table-selector select {
+    background: var(--matte-darker);
+    color: var(--text-light);
+    border: 2px solid var(--matte-light);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.table-selector select:focus {
+    outline: none;
+    border-color: var(--electronic-blue);
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.1);
+}
+
+.table-schema, .table-data, .relationships {
+    margin-top: 30px;
+    background: var(--matte-darker);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--matte-light);
+}
+
+.table-schema h3, .table-data h3, .relationships h3 {
+    color: var(--electronic-blue);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.table-container {
+    overflow-x: auto;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.sql-viewer table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.95rem;
+}
+
+.sql-viewer th, .sql-viewer td {
+    border: 1px solid var(--matte-light);
+    padding: 12px;
+    text-align: left;
+    color: var(--text-light);
+    background: var(--matte-dark);
+}
+
+.sql-viewer th {
+    background: var(--matte-light);
+    color: var(--pure-white);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.sql-viewer tbody tr:hover {
+    background: rgba(99, 179, 237, 0.1);
+}
+
+.relationships ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.relationships li {
+    padding: 12px;
+    border-bottom: 1px solid var(--matte-light);
+    color: var(--text-light);
+    font-family: 'SF Mono', 'Cascadia Code', monospace;
+    font-size: 0.9rem;
+    background: var(--matte-dark);
+    margin-bottom: 8px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.relationships li:hover {
+    background: rgba(99, 179, 237, 0.1);
+    border-color: var(--electronic-blue);
+}
+
+.relationships li:last-child {
+    border-bottom: none;
+}
+
+.modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
 /* Responsive Design for Storage Sections */
 @media (max-width: 768px) {
     .storage-controls {
@@ -1322,5 +1439,17 @@ input:checked + .toggle-slider:before {
 
     .document-content {
         font-size: 0.65rem;
+    }
+
+    .sql-viewer {
+        padding: 10px;
+    }
+
+    .sql-viewer table {
+        font-size: 0.8rem;
+    }
+
+    .sql-viewer th, .sql-viewer td {
+        padding: 8px;
     }
 }

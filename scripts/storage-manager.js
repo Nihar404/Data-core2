@@ -85,14 +85,22 @@ class StorageManager {
         // Determine storage directory based on category
         const directory = this.determineDirectory(category, metadata);
 
-        // Choose the best backend based on file size
-        const backend = this.selectBackendForFile(processedFile);
-        return await backend.storeFile(username, processedFile, category, {
+        // Enhance metadata with version tracking and relationships
+        const enhancedMetadata = {
             ...metadata,
             originalSize: file.size,
             compressed: processedFile !== file,
-            directory: directory
-        });
+            directory: directory,
+            version: metadata.version || 1,
+            relatedFiles: metadata.relatedFiles || [], // IDs of related files (e.g., SQL/NoSQL conversions)
+            originalFileId: metadata.originalFileId || null, // ID of original JSON if this is a conversion
+            conversionType: metadata.conversionType || null, // 'sql', 'nosql', or null
+            structureAnalysis: metadata.structureAnalysis || null // JSON structure analysis results
+        };
+
+        // Choose the best backend based on file size
+        const backend = this.selectBackendForFile(processedFile);
+        return await backend.storeFile(username, processedFile, category, enhancedMetadata);
     }
 
     determineDirectory(category, metadata = {}) {
